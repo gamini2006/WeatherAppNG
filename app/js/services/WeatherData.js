@@ -2,8 +2,8 @@
 
 weatherApp.factory('weatherData', function ($http, $log) {
 	return {
-		getWeather: function(successcb, cityid){
-			$http({method:'GET', url:'http://api.openweathermap.org/data/2.5/weather?id=' + cityid}).
+		getWeather: function(successcb, cityid, apikey){
+			$http({method:'GET', url:'http://api.openweathermap.org/data/2.5/weather?id=' + cityid + '&appid='+ apikey}).
 			success(function(data, status, headers, config){
 				successcb(data);
 			}).

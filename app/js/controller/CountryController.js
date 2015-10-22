@@ -13,6 +13,7 @@ weatherApp.controller('CountryCtrl', function ($scope, $http, $log, $filter, wea
 	$scope.filteredcitydata = null,
 	$scope.selectedCity = null,
 	$scope.weather = null,
+	$scope.apikey = "e44c5cf5cb3b90ab8432daf8e3962200",
 	$http.get('json/countries.json')
 		.success(function(data){
 			$scope.countries = data;
@@ -33,10 +34,10 @@ weatherApp.controller('CountryCtrl', function ($scope, $http, $log, $filter, wea
 		});
 	},
 	$scope.updateCity = function(){
-		console.log($scope.selectedCity); 
+		
 		weatherData.getWeather( function(weather){
-			debugger;
+			console.log(weather); 	
 			$scope.weather = weather;
-		}, $scope.selectedCity);
+		}, $scope.selectedCity, $scope.apikey);
 	}
 });
